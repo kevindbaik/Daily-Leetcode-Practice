@@ -19,6 +19,8 @@
 */
 
 // Method 1: Use on hash map
+// TC: O(n)
+// SC: O(n)
 const validAnagram = function(s,t) {
   if(s.length !== t.length) return false;
 
@@ -38,6 +40,8 @@ const validAnagram = function(s,t) {
 }
 
 // Method 2: Use two hash maps
+// TC: O(n)
+// SC: O(n)
 const validAnagram2 = function(s, t) {
   if(s.length !== t.length) return false;
 
@@ -61,4 +65,17 @@ const validAnagram2 = function(s, t) {
   }
 
   return true;
+}
+
+// Method 3: Using sort
+// TC: O(n log n) based on most a sorting algo
+// SC: O(n) but depends on sorting algo
+
+const validAnagramSort = function(s, t) {
+  if(s.length !== t.length) return false;
+
+  const sortedS = s.split('').sort().join('');
+  const sortedT = t.split('').sort().join('');
+
+  return sortedS === sortedT;
 }
