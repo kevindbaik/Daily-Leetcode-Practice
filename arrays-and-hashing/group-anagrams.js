@@ -73,3 +73,25 @@ const groupAnagrams2 = function(strs) {
 
   return Object.values(hash);
 };
+
+
+// attempt 3
+var groupAnagrams = function(strs) {
+  const hash = {};
+  const ans = [];
+
+  for(let i = 0; i < strs.length; i++) {
+      const sort = strs[i].split("").sort().join("");
+      if(!hash[sort]) {
+          hash[sort] = [strs[i]];
+      } else {
+          hash[sort].push(strs[i]);
+      }
+  }
+
+  for(const key in hash) {
+      ans.push(hash[key])
+  }
+
+  return ans
+};
