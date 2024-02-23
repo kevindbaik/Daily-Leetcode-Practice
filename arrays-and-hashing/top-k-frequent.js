@@ -52,6 +52,7 @@ function topKFrequent(nums, k) {
   return result;
 }
 
+//! practice day 2
 function topKFrequent(nums, k) {
   // Count the frequency of each element
   const frequencyMap = new Map();
@@ -69,4 +70,35 @@ function topKFrequent(nums, k) {
   }
 
   return result;
+}
+
+//! practice day 3
+function topKFrequent(nums, k) {
+  const hash = {};
+  for(let num of nums) {
+      if(!hash[num]) {
+          hash[num] = 1;
+      } else {
+          hash[num]++
+      }
+  }
+
+  const buckets = Array.from({length: nums.length + 1}, () => []);
+  console.log(buckets)
+
+  for (const num in hash) {
+      const freq = hash[num];
+      buckets[freq].push(parseInt(num))
+  };
+
+  console.log(buckets)
+  const res = [];
+  for(let i = buckets.length - 1; i >= 0; i--) {
+      if(buckets[i].length > 0) {
+          res.push(...buckets[i]);
+          if(res.length >= k) break;
+      }
+  }
+
+  return res;
 }
