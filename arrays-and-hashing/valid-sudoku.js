@@ -68,3 +68,64 @@ function isValidSudoku(board) {
   // If all checks passed, the board is valid
   return true;
 }
+
+//! attempt 2 with my notes
+
+// input will be an array of arrays that represent a board
+// output will be a boolean determing if input array is a valid sudoku board
+
+// check if each row is valid sudoku, if not immediately return false
+// check if each column is valid sudoku, if not return false
+// check if each 3x3 is valid, if not return false
+
+// use a hash set to check for each condition (row, col, 3x3)
+
+
+function isValidSudoku(board) {
+    for(let i = 0; i < board.length; i++) {
+        // initialize a hash set for each row in our board
+        // this hash set will store numbers as keys
+        const rowSet = new Set();
+        for(let j = 0; j < board[i].length; j++) {
+            const value = board[i][j];
+            // if the value is "." or "," skip to next iteration
+            // continue can be used to ignore
+            if(value === "." || value === ",") continue;
+
+            // if the value exists within our hash set, immediately return false
+            if(rowSet.has((value))) return false
+            // otherwise add the value to hash set
+            else rowSet.add(value)
+        }
+    }
+
+    for(let i = 0; i < board[0].length; i++) {
+        const columnSet = new Set();
+        for(let j = 0; j < board.length; j++) {
+            const value = board[j][i];
+            if(value === "." || value === ",") continue;
+            if(columnSet.has((value))) return false
+            else columnSet.add(value)
+        }
+    }
+
+     // Iterate over each 3x3 sub-box starting index
+    for (let row = 0; row < 9; row += 3) {
+        for (let col = 0; col < 9; col += 3) {
+            const boxSet = new Set(); // Create a new Set for each 3x3 sub-box
+
+            // Iterate over the elements within the current 3x3 sub-box
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    const value = board[row + i][col + j]; // Access each element in the sub-box
+                    if (value === "." || value === ",") continue; // Skip empty cells
+
+                    // Check for duplicates within the sub-box
+                    if (boxSet.has(value)) return false; // Duplicate found, not valid
+                    else boxSet.add(value);
+                }
+            }
+        }
+    }
+    return true;
+}
