@@ -18,3 +18,32 @@
 * * 0 <= nums.length <= 105
 * * -109 <= nums[i] <= 109
 */
+
+
+// ! ATTEMPT 1
+// input is an array of integers
+// output is an integer representing the length of an array
+
+// use a hash set to store each number
+// return length
+
+function longestConsecutive(nums) {
+  const numSet = new Set(nums);
+  let maxLength = 0;
+
+  for (const num of numSet) {
+      if (!numSet.has(num - 1)) {
+          let currentNum = num;
+          let currentLength = 1;
+
+          while (numSet.has(currentNum + 1)) {
+              currentNum += 1;
+              currentLength += 1;
+          }
+
+          maxLength = Math.max(maxLength, currentLength);
+      }
+  }
+
+  return maxLength;
+}
