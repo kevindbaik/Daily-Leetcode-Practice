@@ -64,6 +64,12 @@ const groupAnagrams2 = function(strs) {
     }
 
     const key = Object.keys(count).sort().map(char => `${char}${count[char]}`).join('');
+    // lets say our count looks like this: { d: 2, a: 1 }.
+    // object.keys(count) makes it look like this: ['d', 'a'];
+    // .sort makes it look like this ['a', 'd']... we do this so that the order of all strings will be the same
+    // .map(char => `${char}${count[char]}`) makes it so that we transform each element in the array into a new array with what we desire... in this case it will look like ['a1', 'd2']
+    // .join('') simply turns our array into a string making it 'a1d2'
+
     if (!hash[key]) {
       hash[key] = [word];
     } else {
@@ -72,26 +78,4 @@ const groupAnagrams2 = function(strs) {
   }
 
   return Object.values(hash);
-};
-
-
-// attempt 3
-var groupAnagrams = function(strs) {
-  const hash = {};
-  const ans = [];
-
-  for(let i = 0; i < strs.length; i++) {
-      const sort = strs[i].split("").sort().join("");
-      if(!hash[sort]) {
-          hash[sort] = [strs[i]];
-      } else {
-          hash[sort].push(strs[i]);
-      }
-  }
-
-  for(const key in hash) {
-      ans.push(hash[key])
-  }
-
-  return ans
 };
