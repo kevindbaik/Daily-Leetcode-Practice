@@ -22,6 +22,7 @@
 // use two maps to track characters mapping from first str to second, vice versa
 // loop through each character in both strings at same time, if a mapping exists check if it matches current char in other string (i)
 // if map doesnt exist, add to map
+//! the specific index of the characters is NOT important!!! we just need to ensure a consistent one - one mapping between characters of their two strings (isomorphism)
 
 function isIsomorphic(s, t) {
   if (s.length !== t.length) return false;

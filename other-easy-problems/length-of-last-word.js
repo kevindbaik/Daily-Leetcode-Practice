@@ -1,6 +1,6 @@
-// 205. Isomorphic Strings
+// 58. Length of Last Word
 // Easy
-// https://leetcode.com/problems/isomorphic-strings/description/?envType=daily-question&envId=2024-04-02
+// https://leetcode.com/problems/length-of-last-word/?envType=daily-question&envId=2024-04-02
 
 //* Given a string s consisting of words and spaces, return the length of the last word in the string.
 //* A word is a maximal  substring consisting of non-space characters only.
