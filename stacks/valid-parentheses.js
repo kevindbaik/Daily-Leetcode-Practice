@@ -1,5 +1,5 @@
 // 20. Valid Parentheses
-// Easy
+// Medium
 // https://leetcode.com/problems/valid-parentheses/description/
 
 //* Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
@@ -16,9 +16,6 @@
 * * Input: s = "()[]{}"
 * * Output: true
 
-* * Constraints:
-* * s consists of parentheses only '()[]{}'.
-* * 1 <= s.length <= 104
 */
 
 
